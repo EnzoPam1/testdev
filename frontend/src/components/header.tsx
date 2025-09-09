@@ -47,6 +47,7 @@ export default function Header() {
           <Link href="/news" className={`nav-item ${isActive("/news")}`}>News</Link>
           <Link href="/events" className={`nav-item ${isActive("/events")}`}>Events</Link>
           <Link href="/about" className={`nav-item ${isActive("/about")}`}>About</Link>
+          <Link href="/dashboard" className={`nav-item ${isActive("/dashboard")}`}>Dashboard</Link>
         </nav>
       </div>
 
