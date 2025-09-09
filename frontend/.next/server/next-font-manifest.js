@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/home/enzo/Année3/Survivor Seminar/JEB INCUBATOR/TEST VERSION/frontend/src/app/layout\":[\"static/media/904be59b21bd51cb-s.p.woff2\",\"static/media/5d258b355fefebcb-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"

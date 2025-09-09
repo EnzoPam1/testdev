@@ -1,0 +1,77 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  ADMIN
+  STARTUP
+  MEMBER
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String?
+  role      Role     @default(MEMBER)
+  fullName  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  extId     String?  @unique
+}
+
+model Startup {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String?
+  website     String?
+  sector      String?
+  maturity    String?
+  location    String?
+  logoUrl     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  extId       String?  @unique
+}
+
+model News {
+  id          String    @id @default(cuid())
+  title       String
+  content     String?
+  publishedAt DateTime?
+  startupId   String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  extId       String?   @unique
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  startsAt    DateTime
+  endsAt      DateTime
+  location    String?
+  startupId   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  extId       String?  @unique
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  status      String?   // ex: "ongoing", "completed"
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  extId       String?  @unique
+}

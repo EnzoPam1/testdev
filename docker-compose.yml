@@ -1,0 +1,29 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    environment:
+      PORT: 4000
+      JWT_SECRET: change-me
+      DATABASE_URL: file:/data/dev.db
+      WEB_ORIGIN: http://localhost:3000
+    ports:
+      - "4000:4000"
+    volumes:
+      - db_data:/data
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_API_URL: http://localhost:4000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+
+volumes:
+  db_data:
