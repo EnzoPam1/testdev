@@ -18,6 +18,7 @@ async function main() {
         create: {
           extId: String(s.id),
           name: s.name ?? s.title ?? "Unnamed",
+          slug: (s.name ?? s.title ?? "unnamed").toLowerCase().replace(/\s+/g, '-'), // AJOUTER
           description: s.description ?? null,
           website: s.website ?? null,
         },

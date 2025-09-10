@@ -44,7 +44,10 @@ app.addHook("onSend", async (_req, reply, payload) => {
 await app.register(cookie);
 await app.register(jwt, {
   secret: process.env.JWT_SECRET || "dev-secret",
-  cookie: { cookieName: "access_token" },
+  cookie: { 
+    cookieName: "access_token",
+    signed: false
+  },
 });
 
 // Guard
